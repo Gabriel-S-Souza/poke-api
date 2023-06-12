@@ -18,11 +18,10 @@ export class PokemonModel {
   }
 
   static fromJson(json: any): PokemonModel {
-    const parsedJson = JSON.parse(json);
     return new PokemonModel({
-      id: parsedJson.id,
-      name: parsedJson.name,
-      imageUrl: parsedJson.sprites.front_default,
+      id: json.id,
+      name: json.name,
+      imageUrl: json.imageUrl,
     });
   }
 

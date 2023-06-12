@@ -13,7 +13,7 @@ export class PokemonsRepository {
         `https://pokeapi.co/api/v2/pokemon?offset=${page * 50}&limit=50`,
       );
       const responseFul = addImageAndIdToPokemon(response.data.results, page);
-      return responseFul.map((pokemon) => new PokemonModel(pokemon));
+      return responseFul.map((pokemon) => PokemonModel.fromJson(pokemon));
     } catch (error) {
       console.log(error);
       throw new Error(error);
