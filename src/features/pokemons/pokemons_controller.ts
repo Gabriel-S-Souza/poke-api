@@ -5,10 +5,9 @@ import { PokemonsRepository } from './pokemons_repository';
 export class PokemonsController {
   constructor(private readonly pokemonsRepository: PokemonsRepository) {}
 
-  @Get('/')
+  @Get('/pokemons')
   async getPokemons(@Query('page') page: number): Promise<any> {
     const pageNumber: number = page ? page : 0;
-    const response = await this.pokemonsRepository.getPokemons(pageNumber);
-    return response.map((pokemon) => pokemon.toJson());
+    return this.pokemonsRepository.getPokemons(pageNumber);
   }
 }
