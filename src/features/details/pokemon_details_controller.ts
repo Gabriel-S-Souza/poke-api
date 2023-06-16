@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PokemonDetailsRepository } from './pokemon_details_repository';
 
 @Controller()
@@ -7,8 +7,8 @@ export class PokemonDetailsController {
     private readonly pokemonDetailsRepository: PokemonDetailsRepository,
   ) {}
 
-  @Get('/details')
-  getPokemonDetails() {
-    return this.pokemonDetailsRepository.getPokemonDetails();
+  @Get('/details/:id')
+  async getDetails(@Param('id') id: number): Promise<any> {
+    return this.pokemonDetailsRepository.getDetails(id);
   }
 }

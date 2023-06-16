@@ -8,10 +8,9 @@ export class StatisticsModel {
   }
 
   static fromJson(json: any): StatisticsModel {
-    const parsedJson = JSON.parse(json);
     return new StatisticsModel({
-      name: parsedJson.stat.name,
-      value: parsedJson.base_stat,
+      name: json.stat.name,
+      value: json.base_stat,
     });
   }
 

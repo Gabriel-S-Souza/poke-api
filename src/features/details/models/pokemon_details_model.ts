@@ -48,22 +48,17 @@ export class PokemonDetailsModel {
   }
 
   static fromJson(json: any): PokemonDetailsModel {
-    const parsedJson = JSON.parse(json);
     return new PokemonDetailsModel({
-      id: parsedJson.id,
-      name: parsedJson.name,
-      imageUrl: parsedJson.sprites.front_default,
-      description: parsedJson.species.flavor_text_entries[0].flavor_text,
-      height: parsedJson.height,
-      weight: parsedJson.weight,
-      types: parsedJson.types.map((type: any) => type.type.name),
-      abilities: parsedJson.abilities.map(
-        (ability: any) => ability.ability.name,
-      ),
-      moves: parsedJson.moves.map((move: any) => move.move.name),
-      statistics: parsedJson.stats.map((stat: any) =>
-        StatisticsModel.fromJson(stat),
-      ),
+      id: json.id,
+      name: json.name,
+      imageUrl: json['sprites']['other']['official-artwork']['front_default'],
+      description: json.description,
+      height: json.height,
+      weight: json.weight,
+      types: json.types.map((type: any) => type.type.name),
+      abilities: json.abilities.map((ability: any) => ability.ability.name),
+      moves: json.moves.map((move: any) => move.move.name),
+      statistics: json.stats.map((stat: any) => StatisticsModel.fromJson(stat)),
     });
   }
 
