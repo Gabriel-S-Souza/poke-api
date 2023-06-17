@@ -12,5 +12,12 @@
             "dest": "src/main.ts",
             "methods": ["GET"]
         }
-    ]
+    ],
+    "rewrites": [
+        {
+          "source": "/(.*)",
+          "destination": "src/main.ts"
+    
+        }
+      ]
 }
