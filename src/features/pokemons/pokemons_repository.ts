@@ -1,6 +1,4 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { HttpClient } from 'src/http_client';
 import {
   API_BSE_URL,
   AVAILABLE_IMAGES,
@@ -8,18 +6,21 @@ import {
   LIMIT,
   POKEMONS_ENDPOINT,
 } from 'src/constants';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class PokemonsRepository {
-  private http = new HttpClient(new HttpService());
+  constructor(private http: HttpService) {}
 
   async getPokemons(page: number): Promise<PokemonResponse> {
     try {
-      const response = await this.http.get(
-        `https://pokeapi.co/api/v2/pokemon?offset=${
-          page * LIMIT
-        }&limit=${LIMIT}`,
-      );
+      const response = await this.http
+        .get(
+          `https://pokeapi.co/api/v2/pokemon?offset=${
+            page * LIMIT
+          }&limit=${LIMIT}`,
+        )
+        .toPromise();
       return this.addImageAndId(response.data, page);
     } catch (error) {
       console.log(error);

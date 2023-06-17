@@ -1,21 +1,20 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { HttpClient } from 'src/http_client';
 import { PokemonDetailsModel } from './models/pokemon_details_model';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class PokemonDetailsRepository {
-  private http = new HttpClient(new HttpService());
+  constructor(private http: HttpService) {}
 
   async getDetails(id: number): Promise<PokemonDetailsResponse> {
     try {
-      const response = await this.http.get(
-        `https://pokeapi.co/api/v2/pokemon/${id}`,
-      );
+      const response = await this.http
+        .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        .toPromise();
       if (response.data) {
-        const responseDescription = await this.http.get(
-          `https://pokeapi.co/api/v2/pokemon-species/${id}`,
-        );
+        const responseDescription = await this.http
+          .get(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+          .toPromise();
         let descriptionText: string;
         if (responseDescription.data) {
           const descriptionJson = responseDescription.data[
