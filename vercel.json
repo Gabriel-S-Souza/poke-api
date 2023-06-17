@@ -11,5 +11,10 @@
           "source": "/(.*)",
           "destination": "src/main.ts"
         }
+      ],
+      "headers": [
+        {
+          "source": "/(.*)"
+        }
       ]
 }
