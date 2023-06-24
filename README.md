@@ -4,7 +4,7 @@
 <h4>Endpoints</h4>
 <p>A API possui dois endpoints principais que utilizam como base a https://pokeapi.co/, porém adequa a resposta ao requisitos do design citado fornecendo informações ausentes — ID e imagem (no endpoint de listagem) e descrição (no endpoint de detalhes).
 <p><b>Listagem de Pokemons</b></p>
-<p>Endpoint para listar os pokemons com suporte para paginação. O parametro <code>page</code> varia de 0 a 25.</p>
+<p>Listagem dos pokemons com suporte para paginação. O parametro <code>page</code> varia de 0 a 25.</p>
 <p>Exemplo:</p>
 
 ```
