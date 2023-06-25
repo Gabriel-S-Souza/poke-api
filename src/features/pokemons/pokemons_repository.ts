@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
-  API_BSE_URL,
+  POKE_FINDER_URL,
   AVAILABLE_IMAGES,
   PAGE_TOTAL,
   LIMIT,
@@ -45,10 +45,12 @@ export class PokemonsRepository {
       count: pokemons.count,
       next:
         page < PAGE_TOTAL
-          ? `${API_BSE_URL}${POKEMONS_ENDPOINT}?page=${+page + 1}`
+          ? `${POKE_FINDER_URL}${POKEMONS_ENDPOINT}?page=${+page + 1}`
           : null,
       previous:
-        page > 0 ? `${API_BSE_URL}${POKEMONS_ENDPOINT}?page=${page - 1}` : null,
+        page > 0
+          ? `${POKE_FINDER_URL}${POKEMONS_ENDPOINT}?page=${page - 1}`
+          : null,
       results: results,
     };
   }

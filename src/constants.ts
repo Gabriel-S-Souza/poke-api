@@ -1,4 +1,4 @@
-export const API_BSE_URL = 'http://localhost:3000/api';
+export const POKE_FINDER_URL = 'https://fancy-foal-tuxedo.cyclic.app/api';
 export const POKEMONS_ENDPOINT = '/pokemons';
 export const DETAILS_ENDPOINT = '/details';
 export const LIMIT = 50;
